@@ -9,14 +9,14 @@ dotenv.config({
 });
 // MongoDB Connection
 const connectionDatabase = require("./database/connectionDatabase");
-connectionDatabase()
+connectionDatabase();
 // Body Middleware
-app.use(bodyparser.urlencoded({ extended: true }));
 
+app.set("view engine", "ejs");
+app.use(bodyparser.urlencoded({ extended: true }));
 // Routes
 app.get("/", (req, res) => {
-  const rootdir = path.dirname(require.main.filename);
-  res.sendFile(path.join(rootdir, "/public/views/index.html"));
+  res.render("index.ejs");
 });
 app.use("/api", route);
 
