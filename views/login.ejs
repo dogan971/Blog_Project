@@ -90,10 +90,10 @@
                 Giriş Yap
               </button>
             </form>
-            <% if (status == "error") { %>
-            <div class="alert alert-danger mt-2">Giriş Başarısız</div>
-            <% }else if (status == "success"){%>
-            <div class="alert alert-success">Giriş Başarılı</div>
+            <% if (status) {%>
+            <div class="alert alert-success mt-2">Başarılı...</div>
+            <%}%> <% if (status == false) {%>
+            <div class="alert alert-danger mt-2">Başarısız...</div>
             <%}%>
           </div>
         </div>
