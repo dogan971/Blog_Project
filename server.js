@@ -17,6 +17,8 @@ app.use(bodyparser.urlencoded({ extended: true }));
 // Routes
 app.get("/", (req, res) => {
   res.render("index.ejs");
+  const cookie = req.headers.cookie.split("; ")[5].split("=")[1];
+  return console.log(cookie);
 });
 app.use("/api", route);
 
