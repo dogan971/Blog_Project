@@ -35,7 +35,12 @@ const login = expressAsyncHandler(async (req, res, next) => {
     return res.render("login.ejs");
   }
 });
+const logout = async (req, res, next) => {
+  res.clearCookie("Cookie");
+  return res.redirect("/");
+};
 module.exports = {
   register,
   login,
+  logout,
 };

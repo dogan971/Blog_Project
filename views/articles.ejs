@@ -6,5 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Makaleler</title>
   </head>
-  <body></body>
+  <body>
+    <%- include("./partials/navbar.ejs") %>
+    <h1>Makaleler</h1>
+    <hr />
+    <% if (articles) { %> <% articles.forEach(data => { %>
+    <h3>
+      Başlık:<a href="/api/articles/edit/<%data._id%>"> <%- data.title %> </a>
+    </h3>
+    <h4>Yazar:<%- data.author %></h4>
+    <hr />
+    <% }) %> <% }%> <% if (articles == "") {%>
+    <div class="alert alert-danger">Hiç Makale Bulunmuyor</div>
+    <%}%>
+  </body>
 </html>

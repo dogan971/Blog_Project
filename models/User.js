@@ -42,7 +42,7 @@ UserSchema.methods.generateJWTFromUser = function () {
   const { JWT_SECRET_KEY, JWT_EXPIRE } = process.env;
   const payload = {
     id: this._id,
-    email: this.email,
+    name: this.name,
   };
   const token = jsonwebtoken.sign(payload, JWT_SECRET_KEY, {
     expiresIn: JWT_EXPIRE,
