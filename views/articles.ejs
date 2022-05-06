@@ -15,7 +15,7 @@
     <hr />
     <% if (articles) { %> <% articles.forEach(data => { %>
     <h3>
-      Başlık:<a href="/api/articles/details/<%data._id%>">
+      Başlık:<a href="/api/articles/detail/<%-data._id%>">
         <%- data.title %>
       </a>
     </h3>

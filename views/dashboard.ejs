@@ -29,7 +29,11 @@
         <% articles.forEach((value) => { %>
         <tr>
           <th scope="row"><%- value._id %></th>
-          <td><%- value.title %></td>
+          <td>
+            <a href="/api/articles/detail/<%-value._id%>">
+              <%- value.title %>
+            </a>
+          </td>
           <td><%- value.author%></td>
           <td><%- value.content%></td>
           <td><%- value.created_date.toLocaleDateString()%></td>
@@ -41,7 +45,15 @@
               Güncelle</a
             >
           </td>
-          <td><a href="#" class="btn btn-danger"> Sil</a></td>
+          <td>
+            <a
+              href="/api/articles/deletearticle/<%- value._id%>"
+              class="btn btn-danger"
+              type="submit"
+            >
+              Sil</a
+            >
+          </td>
         </tr>
         <% }) %>
       </tbody>

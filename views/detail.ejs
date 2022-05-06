@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <%- include("./partials/extensions.ejs") %>
+  </head>
+  <body>
+    <%- include("./partials/navbar.ejs") %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <h3>Makale Detayı</h3>
+          <hr />
+   
+            <label for="title"> Başlık:</label> <br />
+            <input type="text" name="title" class="form-control"  value="<%- article.title%>"/>
+            <label for="title"> İçerik:</label> <br />
+            <textarea  name="content" class="form-control"  /><%- article.content %></textarea>
+            <label for="title"> Yazar:</label> <br />
+            <input type="text" name="title" class="form-control"  value="<%- article.author%>"/>
+            <label for="title"> Oluşturulma Tarihi:</label> <br />
+            <input type="text" name="title" class="form-control"  value="<%- article.created_date.toLocaleDateString()%>"/>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
