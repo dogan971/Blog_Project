@@ -3,7 +3,8 @@ const {
   comparePassword,
   validateUserInput,
 } = require("../helpers/inputhelpers");
-const { sendJWTToClient } = require("../helpers/tokenHelpers");
+const { sendJWTToClient, tokenDecode } = require("../helpers/tokenHelpers");
+const Articles = require("../models/Articles");
 const User = require("../models/User");
 const register = expressAsyncHandler(async (req, res) => {
   if (req.method == "POST") {
@@ -39,8 +40,17 @@ const logout = async (req, res, next) => {
   res.clearCookie("Cookie");
   return res.redirect("/");
 };
+
+const dashboard = expressAsyncHandler(async (req, res, next) => {
+  const token = req.headers.cookie.split("; ")[5].split("=")[1];
+  tokenDecode(req, res, token);
+  const articles = await Articles.find({ author: req.user });
+
+  return res.render("dashboard.ejs", { articles });
+});
 module.exports = {
   register,
   login,
   logout,
+  dashboard,
 };

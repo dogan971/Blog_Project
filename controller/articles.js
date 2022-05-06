@@ -13,7 +13,6 @@ const addArticles = expressAsyncHandler(async (req, res) => {
     const created_date = new Date().toUTCString();
     const token = req.headers.cookie.split("; ")[5].split("=")[1];
     tokenDecode(req, res, token);
-    console.log(token);
     await Articles.create({
       title,
       content,
