@@ -11,21 +11,31 @@ const addArticles = expressAsyncHandler(async (req, res) => {
   if (req.method == "POST") {
     const { title, content } = req.body;
     const created_date = new Date().toUTCString();
-    const token = req.headers.cookie.split("; ")[5].split("=")[1];
-    tokenDecode(req, res, token);
+    tokenDecode(req, res);
     await Articles.create({
       title,
       content,
       created_date,
       author: req.user,
     });
-    articles = await Articles.find();
-    return res.redirect("/api/articles");
+    return res.redirect("/api/user/dashboard");
   }
   return res.render("addarticle");
 });
 
+const editArticle = expressAsyncHandler(async (req, res) => {
+  const article = req.data
+  if (req.method == "POST") {
+    const { title, content } = req.body;
+    article.title = title;
+    article = content;
+    await article.save();
+    return res.render("edit", { article });
+  }
+  return res.render("edit", { article });
+});
 module.exports = {
   getArticles,
   addArticles,
+  editArticle,
 };

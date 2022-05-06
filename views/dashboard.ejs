@@ -33,7 +33,14 @@
           <td><%- value.author%></td>
           <td><%- value.content%></td>
           <td><%- value.created_date.toLocaleDateString()%></td>
-          <td><a href="#" class="btn btn-warning"> Güncelle</a></td>
+          <td>
+            <a
+              href="/api/articles/editarticle/<%- value._id%>"
+              class="btn btn-warning"
+            >
+              Güncelle</a
+            >
+          </td>
           <td><a href="#" class="btn btn-danger"> Sil</a></td>
         </tr>
         <% }) %>
@@ -42,5 +49,6 @@
     <% }%> <% if (articles == "") {%>
     <div class="alert alert-danger">Hiç Makalen Bulunmuyor</div>
     <%}%>
+    <a href="/api/articles/addarticle" class="btn btn-info">Makale Ekle</a>
   </body>
 </html>

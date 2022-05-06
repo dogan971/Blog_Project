@@ -42,10 +42,8 @@ const logout = async (req, res, next) => {
 };
 
 const dashboard = expressAsyncHandler(async (req, res, next) => {
-  const token = req.headers.cookie.split("; ")[5].split("=")[1];
-  tokenDecode(req, res, token);
+  tokenDecode(req, res);
   const articles = await Articles.find({ author: req.user });
-
   return res.render("dashboard.ejs", { articles });
 });
 module.exports = {
